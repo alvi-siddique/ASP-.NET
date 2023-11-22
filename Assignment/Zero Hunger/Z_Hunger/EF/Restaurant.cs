@@ -11,7 +11,6 @@ namespace Z_Hunger.EF
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     public partial class Restaurant
     {
@@ -22,27 +21,14 @@ namespace Z_Hunger.EF
             this.CollectionRequests = new HashSet<CollectionRequest>();
         }
 
-        [Required]
         public int RestaurantID { get; set; }
-
-        [Required]
-        [EmailAddress] // This checks if the email has a valid format
         public string RestauranEmail { get; set; }
-
-        [Required]
         public string Name { get; set; }
-
-        [Required]
-        [MinLength(6)] // Example: Minimum length of 6 characters for the password
         public string Password { get; set; }
-
-        [Required]
-        [Compare("Password")] // Ensures ConfirmPass matches the Password property
         public string ConfirmPass { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Collected> Collecteds { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CollectionRequest> CollectionRequests { get; set; }
     }
